@@ -1,0 +1,39 @@
+{
+    "RecipeFormatVersion": "2020-01-25",
+    "ComponentName": "{COMPONENT_NAME}",
+    "ComponentVersion": "{COMPONENT_VERSION}",
+    "ComponentType": "aws.greengrass.generic",
+    "ComponentDescription": "Install Snort",
+    "ComponentPublisher": "{COMPONENT_AUTHOR}",
+    "ComponentConfiguration": {
+        "DefaultConfiguration": {
+            "Message": "World"
+        }
+    },
+    "ComponentDependencies": {},
+    "Manifests": [
+        {
+            "Platform": {
+                "os": "linux"
+            },
+            "Name": "Linux",
+            "Artifacts": [
+                {
+                    "URI": "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/SnortInstall.zip",
+                    "Unarchive": "ZIP"
+                }
+            ],
+            "Lifecycle": {
+                "Install": {
+                    "Script": "sh {artifacts:decompressedPath}/SnortInstall/install.sh {artifacts:decompressedPath}",
+                    "RequiresPrivilege": true
+                },
+                "Run": {
+                    "Script": "python3 -u {artifacts:decompressedPath}/SnortInstall/main.py {configuration:/Message}",
+                    "RequiresPrivilege": true
+                }
+            }
+        }
+    ],
+    "Lifecycle": {}
+}

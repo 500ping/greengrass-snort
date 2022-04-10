@@ -1,0 +1,16 @@
+{
+  "component": {
+    "com.example.PythonHelloWorld": {
+      "author": "THANGNGUYEN",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "bucket": "bucket-demo-1xx",
+        "region": "ap-southeast-1"
+      }
+    }
+  },
+  "gdk_version": "1.0.0"
+}
