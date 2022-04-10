@@ -7,7 +7,21 @@
     "ComponentPublisher": "{COMPONENT_AUTHOR}",
     "ComponentConfiguration": {
         "DefaultConfiguration": {
-            "Message": "World"
+            "Message": "World",
+            "accessControl": {
+                "aws.greengrass.ipc.mqttproxy": {
+                    "com.example.PythonHelloWorld:mqttproxy:1": {
+                        "policyDescription": "Allows access to publish/subscribe to all topics.",
+                        "operations": [
+                            "aws.greengrass#PublishToIoTCore",
+                            "aws.greengrass#SubscribeToIoTCore"
+                        ],
+                        "resources": [
+                            "*"
+                        ]
+                    }
+                }
+            }
         }
     },
     "ComponentDependencies": {},
